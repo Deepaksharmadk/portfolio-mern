@@ -35,14 +35,3 @@ export const verifyToken = async (req, res, next) => {
     return res.status(401).json({ message: "unauthorized" });
   }
 };
-
-export const verifyRole = (roles) => {
-  return (req, res, next) => {
-    console.log(req.userId.role);
-    if (!roles.includes(req.userId.role)) {
-      console.log(`HELLO`, req.userId.role);
-      return res.status(403).json({ message: "Access denied" });
-    }
-    next();
-  };
-};
